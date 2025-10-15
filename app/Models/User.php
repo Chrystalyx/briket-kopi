@@ -21,6 +21,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'no_hp',
+        'alamat',
+        'role',
     ];
 
     /**
@@ -44,5 +47,15 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function toko()
+    {
+        return $this->hasOne(Toko::class);
+    }
+
+    public function transaksis()
+    {
+        return $this->hasMany(Transaksi::class);
     }
 }

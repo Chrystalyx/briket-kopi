@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('Admin.Product.Index');
-});
+
+use App\Http\Controllers\Admin\DashboardController;
+
+Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
