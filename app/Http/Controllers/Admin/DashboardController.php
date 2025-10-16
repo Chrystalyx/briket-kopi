@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Produk;
+use App\Models\Product;
 use App\Models\Transaksi;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -16,7 +16,7 @@ class DashboardController extends Controller
         $totalUsers = User::count();
         $totalOrders = Transaksi::count();
         $totalRevenue = Transaksi::where('status_pembayaran', 'success')->sum('grand_total');
-        $totalProducts = Produk::count();
+        $totalProducts = Product::count();
 
         $salesData = Transaksi::select(
             DB::raw('MONTH(tanggal_transaksi) as month'),
@@ -56,7 +56,7 @@ class DashboardController extends Controller
         $orderStatusLabels = $orderStatusData->keys()->toArray();
         $orderStatusValues = $orderStatusData->values()->toArray();
 
-        return view('Admin.Dashboard.Index', compact(
+        return view('admin.dashboard.index', compact(
             'totalUsers',
             'totalOrders',
             'totalRevenue',
