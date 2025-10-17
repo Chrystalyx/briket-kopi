@@ -13,6 +13,6 @@ Route::get('/register', function () {
     return view('auth.register');
 })->name('register');
 
-Route::get('/dashboard-admin', function () {
-    return view('Admin.Dashboard.Index');
+Route::get('/', function () {
+    return view('Admin.Product.Index');
 });
